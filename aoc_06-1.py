@@ -1,18 +1,13 @@
 from common import get_input_lines, grid_get
 
-map = list
-UP = (-1, 0)
-DOWN = (1, 0)
-RIGHT = (0, 1)
-LEFT = (0, -1)
+UP, DOWN, RIGHT, LEFT = (-1, 0), (1, 0), (0, 1), (0, -1)
 
 def main():
-    global map
     map = get_input_lines('aoc_06.txt')
 
-    curr_pos = tuple
-    facing = tuple
-    visited = set
+    curr_pos = tuple()
+    facing = tuple()
+    visited = set()
 
     # Find guard position and facing
     for row in range(len(map)):
@@ -25,7 +20,7 @@ def main():
     while curr_pos[0] >= 0 and curr_pos[0] < len(map) \
           and curr_pos[1] >= 0 and curr_pos[1] < len(map[0]):
         # Mark current position visited
-        visited = visited.union({curr_pos})
+        visited.add(curr_pos)
 
         # Caclulate next position
         next_pos = (curr_pos[0] + facing[0], curr_pos[1] + facing[1])
