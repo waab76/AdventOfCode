@@ -1,9 +1,9 @@
-from common import get_input_lines, grid_get
+from common import get_input_lines_as_grid, grid_get
 
 UP, DOWN, RIGHT, LEFT = (-1, 0), (1, 0), (0, 1), (0, -1)
 
 def main():
-    map = get_input_lines('aoc_06.txt')
+    map = get_input_lines_as_grid('aoc_06.txt')
 
     curr_pos = tuple()
     facing = tuple()

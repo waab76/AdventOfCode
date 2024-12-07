@@ -1,4 +1,4 @@
-from common import get_input_lines, grid_get
+from common import get_input_lines_as_grid, grid_get
 import copy
 
 UP, DOWN, RIGHT, LEFT = (-1, 0), (1, 0), (0, 1), (0, -1)
@@ -37,7 +37,7 @@ def check_for_loop(loop_map:list, row:int, col:int)->bool:
 
 
 def main():
-    room_map = get_input_lines('aoc_06.txt')
+    room_map = get_input_lines_as_grid('aoc_06.txt')
     loops = 0
 
     for row in range(len(room_map)):
