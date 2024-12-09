@@ -13,3 +13,11 @@ def grid_get(grid:list, col: int, row: int, default:str='.') -> str:
         return grid[row][col]
     except IndexError:
         return default
+
+def print_list(data:list, limit:int=80):
+    printable = ''
+    for item in data:
+        printable += str(item)
+        if len(printable) > limit:
+            break
+    print(printable)
