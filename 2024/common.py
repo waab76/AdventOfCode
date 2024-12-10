@@ -6,7 +6,7 @@ def get_input_lines_as_grid(filename:str) -> list:
     input = open(filename, 'r')
     return [list(line.strip()) for line in input.readlines()]
 
-def grid_get(grid:list, col: int, row: int, default:str='.') -> str:
+def grid_get(grid:list, row: int, col: int, default:str='.') -> str:
     if row < 0 or col < 0:
         return default
     try:
