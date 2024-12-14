@@ -13,6 +13,10 @@ def grid_get(grid:list, row: int, col: int, default:str='.') -> str:
         return grid[row][col]
     except IndexError:
         return default
+    
+def print_grid(data:list):
+    for line in data:
+        print(''.join([str(item) for item in line]))
 
 def print_list(data:list, limit:int=80):
     printable = ''
