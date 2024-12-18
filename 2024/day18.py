@@ -31,7 +31,7 @@ def calc_shortest_path(grid:list, end:tuple)->list:
 def part_1():
     grid = [['.' for col in range(71)] for row in range(71)]
 
-    blocks = get_blocks(1024)   
+    blocks = get_blocks(1024)
 
     for block in blocks:
         grid[block[0]][block[1]] = '#'
@@ -41,7 +41,19 @@ def part_1():
 
     
 def part_2():
-    pass
+    grid = [['.' for col in range(71)] for row in range(71)]
+    blocks = get_blocks(3449)
+
+    # Could do binary search instead of iterating to speed it up, but that would take longer to code
+    for block_idx in range(len(blocks)):
+        block = blocks[block_idx]
+        grid[block[0]][block[1]] = '#'
+
+        if block_idx > 1023:
+            paths = calc_shortest_path(grid, (70,70))
+            if paths[0][0] == sys.maxsize:
+                print(f'Block {block[1]},{block[0]} blocks the path')
+                quit()
 
 if __name__ == '__main__':
     part_1()
