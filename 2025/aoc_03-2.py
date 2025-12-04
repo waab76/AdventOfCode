@@ -22,7 +22,7 @@ def _get_max_joltage(bank:list[int], digits:int) -> int:
         return highest
 
 def main():
-    battery_banks = get_input_lines('/Volumes/CaseSensitive/Workspace/AdventOfCode/2025/aoc_03.txt')
+    battery_banks = get_input_lines('aoc_03.txt')
     total_joltage = 0
 
     for bank in battery_banks:
