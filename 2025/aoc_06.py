@@ -35,7 +35,7 @@ def _part2():
             answer_sum += problem_ans
     except:
         problem = ''
-        for col in range(curr_prob_idx, len(lines[0]) - 1):
+        for col in range(curr_prob_idx, len(lines[0])):
             for row in range(len(lines) - 1):
                 problem += lines[row][col]
             problem += lines[len(lines)-1][curr_prob_idx]
