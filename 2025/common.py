@@ -25,3 +25,6 @@ def print_list(data:list, limit:int=80):
         if len(printable) > limit:
             break
     print(printable)
+
+def replace_char_at(string:str, index:int, replacement:str) -> str:
+    return string[:index] + replacement + string[index + 1:]
