@@ -1,5 +1,3 @@
-from copy import copy
-from functools import cache
 from common import get_input_lines
 
 nodes = {}
@@ -30,10 +28,6 @@ def main():
             guaranteed_no_fits += 1
     
     print(f'Of {len(trees)} trees, {guaranteed_no_fits} cannot work and {guaranteed_fits} absolutely will')
-
-
-    print(f'Done')
-
 
 if __name__ == '__main__':
     main()
