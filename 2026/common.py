@@ -1,5 +1,8 @@
+import heapq
 import re
-from typing import Iterator
+from collections import deque
+from itertools import count
+from typing import Callable, Hashable, Iterable, Iterator
 
 def get_input_lines(filename:str) -> list:
     input = open(filename, 'r')
@@ -45,3 +48,31 @@ def neighbors(grid:list, row:int, col:int, dirs:list=DIRS4) -> Iterator[tuple[in
     for drow, dcol in dirs:
         if in_bounds(grid, row + drow, col + dcol):
             yield row + drow, col + dcol
+
+def bfs(start:Hashable, next_states:Callable) -> dict:
+    """Steps from start to every reachable state. next_states(state) yields neighbor states."""
+    dist = {start: 0}
+    queue = deque([start])
+    while queue:
+        state = queue.popleft()
+        for nxt in next_states(state):
+            if nxt not in dist:
+                dist[nxt] = dist[state] + 1
+                queue.append(nxt)
+    return dist
+
+def dijkstra(start:Hashable, next_states:Callable) -> dict:
+    """Lowest cost from start to every reachable state. next_states(state) yields (neighbor, cost)."""
+    dist = {start: 0}
+    tiebreak = count()
+    heap = [(0, next(tiebreak), start)]
+    while heap:
+        cost, _, state = heapq.heappop(heap)
+        if cost > dist[state]:
+            continue
+        for nxt, step in next_states(state):
+            new_cost = cost + step
+            if nxt not in dist or new_cost < dist[nxt]:
+                dist[nxt] = new_cost
+                heapq.heappush(heap, (new_cost, next(tiebreak), nxt))
+    return dist
